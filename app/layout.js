@@ -1,32 +1,33 @@
-"use client";
+"use client"
 
-import { Geist, Geist_Mono } from "next/font/google";
-import { Navbar } from "@/components/Navbar";
-import { Sidebar } from "@/components/Sidebar";
-import { AuthProvider, useAuthContext } from "@/components/AuthProvider";
+import { Geist, Azeret_Mono as Geist_Mono } from "next/font/google"
+import { Navbar } from "@/components/Navbar"
+import { Sidebar } from "@/components/Sidebar"
+import { AuthProvider, useAuthContext } from "@/components/AuthProvider"
+import { LoadingSpinner } from "@/components/LoadingSpinner"
 // import { Toaster } from "@/components/ui/toaster";
-import "./globals.css";
+import "./globals.css"
 
 // Fuentes
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
+})
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
+})
 
 function AppContent({ children }) {
-  const { user, loading, logout } = useAuthContext(); // Obtén logout desde el contexto
+  const { user, loading } = useAuthContext()
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <LoadingSpinner />
   }
 
   if (!user) {
-    return <>{children}</>;
+    return <>{children}</>
   }
 
   return (
@@ -37,7 +38,7 @@ function AppContent({ children }) {
         <main className="flex-1 p-4">{children}</main>
       </div>
     </div>
-  );
+  )
 }
 
 export default function RootLayout({ children }) {
@@ -60,5 +61,6 @@ export default function RootLayout({ children }) {
         </AuthProvider>
       </body>
     </html>
-  );
+  )
 }
+
