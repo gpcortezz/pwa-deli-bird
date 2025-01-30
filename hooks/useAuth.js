@@ -20,10 +20,11 @@ export function useAuth() {
 
   const login = async (email, password) => {
     try {
-      // Aquí haces una solicitud al endpoint real
       const response = await axios.post(`${config.API_URL}/login`, { email, password })
       setUser(response.data)
-      localStorage.setItem("user", JSON.stringify(response.data))
+      localStorage.setItem("user", JSON.stringify(response.data.user))
+      localStorage.setItem("token", response.data.access_token)
+
       router.push("/dashboard")
     }
     catch (err) {
