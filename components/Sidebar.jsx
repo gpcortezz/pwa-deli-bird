@@ -7,7 +7,7 @@ import { ChevronDown, ChevronRight, LogOut } from "lucide-react";
 import { useAuthContext } from "@/components/AuthProvider";
 
 export function Sidebar() {
-  const { user, logout } = useAuthContext(); // Obtener logout correctamente
+  const { logout } = useAuthContext(); // Obtener logout correctamente
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
   const toggleSubMenu = (name) => {

@@ -19,7 +19,7 @@ export function Navbar() {
       case "/settings":
         return "Configuración"
       default:
-        return "Mi Aplicación"
+        return "Dashboard"
     }
   }
 
