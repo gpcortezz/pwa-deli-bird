@@ -3,6 +3,7 @@
 import { LoginForm } from "@/components/LoginForm"
 import { LoginBackground } from "@/components/LoginBackground"
 import { useAuthContext } from "@/components/AuthProvider"
+import { LoadingSpinner } from "@/components/LoadingSpinner"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
@@ -16,7 +17,9 @@ export default function Home() {
     }
   }, [user, loading, router])
 
-  if (loading) return <p>Cargando...</p>
+  if (loading) {
+      return <LoadingSpinner />
+    }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
