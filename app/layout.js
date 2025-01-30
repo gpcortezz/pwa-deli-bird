@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 function AppContent({ children }) {
-  const { user, loading } = useAuthContext();
+  const { user, loading, logout } = useAuthContext(); // Obtén logout desde el contexto
 
   if (loading) {
     return <div>Cargando...</div>;

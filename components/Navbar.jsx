@@ -32,13 +32,13 @@ export function Navbar() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              <AvatarImage src="/placeholder-avatar.jpg" alt={user.name} />
-              <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+              {/* <AvatarImage src="/placeholder-avatar.jpg" alt={user.name} />
+              <AvatarFallback>{user.name.charAt(0)}</AvatarFallback> */}
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem>{user.name}</DropdownMenuItem>
+          {/* <DropdownMenuItem>{user.name}</DropdownMenuItem> */}
           <DropdownMenuItem onClick={logout}>Cerrar sesión</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

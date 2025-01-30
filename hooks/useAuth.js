@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { config } from "@/config"
+import axios from "axios"
 
 export function useAuth() {
   const [user, setUser] = useState(null)
@@ -16,13 +18,15 @@ export function useAuth() {
     setLoading(false)
   }, [])
 
-  const login = (email, password) => {
-    if (email === "gio@gmail.com" && password === "password") {
-      const user = { name: "Giovanni", email }
-      localStorage.setItem("user", JSON.stringify(user))
-      setUser(user)
+  const login = async (email, password) => {
+    try {
+      // Aquí haces una solicitud al endpoint real
+      const response = await axios.post(`${config.API_URL}/login`, { email, password })
+      setUser(response.data)
+      localStorage.setItem("user", JSON.stringify(response.data))
       router.push("/dashboard")
-    } else {
+    }
+    catch (err) {
       throw new Error("Credenciales inválidas")
     }
   }
@@ -35,4 +39,3 @@ export function useAuth() {
 
   return { user, login, logout, loading }
 }
-

@@ -1,24 +1,27 @@
 "use client"
 
-import { LoginForm } from "../components/LoginForm"
-import { useAuthContext } from "../components/AuthProvider"
+import { LoginForm } from "@/components/LoginForm"
+import { LoginBackground } from "@/components/LoginBackground"
+import { useAuthContext } from "@/components/AuthProvider"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 export default function Home() {
-  const { user } = useAuthContext()
+  const { user, loading } = useAuthContext()
   const router = useRouter()
 
   useEffect(() => {
-    if (user) {
+    if (!loading && user) {
       router.push("/dashboard")
     }
-  }, [user, router])
+  }, [user, loading, router])
+
+  if (loading) return <p>Cargando...</p>
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <LoginBackground />
       <LoginForm />
     </div>
   )
 }
-
